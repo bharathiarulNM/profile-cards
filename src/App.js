@@ -1,23 +1,44 @@
-import logo from './logo.svg';
+// src/App.js
+import React from 'react';
 import './App.css';
+import ProfileCard from './ProfileCard';
 
 function App() {
+  const users = [
+    {
+      name: "Alice Johnson",
+      role: "Frontend Developer",
+      image: "https://randomuser.me/api/portraits/women/44.jpg",
+      description: "Specializes in UI/UX and modern web design."
+    },
+    {
+      name: "Bob Smith",
+      role: "Backend Developer",
+      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      description: "Loves building scalable APIs and databases."
+    },
+    {
+      name: "Charlie Brown",
+      role: "Full Stack Developer",
+      image: "https://randomuser.me/api/portraits/men/65.jpg",
+      description: "Enjoys building full-scale applications."
+    }
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Profile Cards</h1>
+      <div className="card-container">
+        {users.map((user, index) => (
+          <ProfileCard
+            key={index}
+            name={user.name}
+            role={user.role}
+            image={user.image}
+            description={user.description}
+          />
+        ))}
+      </div>
     </div>
   );
 }
